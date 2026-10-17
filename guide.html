@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Путеводитель по серверу</title>
+    <style>
+body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Стили для уведомления сверху */
+        .notification-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background-color: #dc3545; /* красный фон */
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .message-box {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .message-box h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .message-box p {
+            color: #666;
+        }
+
+        .countdown {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #dc3545;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Уведомление сверху -->
+    <div class="notification-bar">⚠️ Раздел «Жалобы» временно не работает</div>
+
+    <!-- Основной блок с сообщением -->
+    <div class="message-box">
+        <h1>Раздел жалоб отключён</h1>
+        <p>Сейчас мы не принимаем жалобы через эту форму.</p>
+        <p>Мы автоматически перенаправим тебя на главную страницу.</p>
+        <div class="countdown" id="countdown">Перенаправление через 3 секунды…</div>
+    </div>
+
+    <script>
+        // Таймер обратного отсчёта и редирект
+        let timeLeft = 3;
+        const countdownElement = document.getElementById('countdown');
+
+        const timer = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = `Перенаправление через ${timeLeft} секунды…`;
+
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                // Переход на главную
+                window.location.href = 'index.html';
+            }
+        }, 1000);
+    </script> 
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="tab">Главная</a>
+            <a href="guide.html" class="tab">Путеводитель</a>
+            <a href="rules.html" class="tab">Правила</a>
+            <a href="mods.html" class="tab">персонал</a>
+            <a href="mod-pannel.html" class="tab">панель для админов</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Путеводитель по серверу</h1>
+        <p>Всё, что нужно знать новичку</p>
+    </header>
+
+    <div class="guide-container">
+
+        <!-- Блок с видео -->
+        <section>
+            <h2>🎬 Обзор сервера</h2>
+            <p>Смотри короткое видео, чтобы быстрее разобраться, где что находится.</p>
+
+            <div class="video-wrapper">
+                <video controls poster="guide-poster.jpg">
+                    <!-- Если есть WebM — добавь первой строкой, браузер выберет лучший формат -->
+                    <source src="guide-video.webm" type="video/webm">
+                    <source src="guide-video.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео. Попробуйте скачать файл guide-video.mp4.
+                </video>
+           </div>
+
+    <footer>
+        &copy; 2026 Minecraft Server. Путеводитель для игроков.
+    </footer>
+
+</body>
+</html>

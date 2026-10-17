@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форум | OtisWorld</title>
+    <style>
+           body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+         body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Верхняя серая панель с вкладками */
+        .navbar {
+            background-color: #cccccc;
+            padding: 10px 0;
+        }
+
+        .tabs-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            border-right: 1px solid #999;
+        }
+
+        .tab:last-child {
+            border-right: none;
+        }
+
+        .tab:hover {
+            background-color: #e0e0e0;
+            color: #000;
+        }
+
+        /* Панель авторизации (справа в шапке) */
+        .auth-panel {
+            margin-left: auto; /* прижимаем вправо */
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-login {
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #333;
+        }
+
+        .btn-register {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        /* Стили для картинки-баннера */
+        .banner-section {
+            max-width: 900px;       /* ширина как у остального контента */
+            margin: 20px auto;       /* центрируем */
+        }
+
+        .banner-img {
+            width: 100%;            /* растягивается на всю ширину блока */
+            height: auto;            /* высота подстраивается, пропорции сохраняются */
+            display: block;          /* убирает лишние отступы снизу */
+            border-radius: 8px;      /* скруглённые углы (опционально) */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* лёгкая тень для красоты */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .counter-box {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .btn {
+            margin-top: 30px;
+            padding: 14px 28px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        h1 { color: #333; }
+    </style>
+</head>
+<body>
+
+    <h1>OtisWorld</h1>
+
+    <!-- Блок счётчика -->
+    <div class="counter-box">
+        Сейчас на сайте: <span id="visitor-count">2</span> чел.
+    </div>
+
+    <p>Добро пожаловать на сервер!</p>
+    <a href="login.html" class="btn">Регистрация / Вход</a>
+
+    <script>
+        // Имитация «живого» счётчика
+        const countElement = document.getElementById('visitor-count');
+        let count = parseInt(countElement.innerText, 1);
+
+        // Каждые 1-2 секунд число меняется на +1 или -1
+        setInterval(() => {
+            const change = Math.random() > 0.5 ? 1 : -1;
+            count += change;
+
+            // Чтобы не уходило в минус
+            if (count > 1) {
+                count = 1;
+            }
+
+            countElement.innerText = count;
+        }, Math.floor(Math.random() * 4000) + 8000); // 1-2 секунд
+    </script>
+
+      </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="tab">Главная</a>
+            <a href="rules.html" class="tab">Правила</a>
+            <a href="mods.html" class="tab">Персонал</a>
+            <a href="news.html" class="tab">новости</a>
+            <a href="complaints.html" class="tab">жалобы на игроков</a>  
+            <a href="admin-login.html" class="tab">панель для админов</a>  
+            <a href="guide.html" class="tab">Путеводитель</a> 
+             <!-- Кнопка ведёт на страницу входа -->
+            <a href="logged.html" class="btn">Регистрация / Вход</a> 
+      </div>
+    </nav>
+
+    
+       <h1>Главная страница форума | OtisWorld</h1></header>
+     </header>
+
+        <!-- Блок с картинкой -->
+    <div class="banner-section">
+        <!-- Замени 'banner.jpg' на имя своего файла или ссылку -->
+        <img src="banner.jpg" alt="Баннер сервера" class="banner-img">
+    </div>
+
+ <!-- Подвал сайта -->
+    <footer>
+        <div class="footer-container">
+            <!-- Колонка 1: О сайте -->
+            <div class="footer-section">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft Server</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+        .navbar { background: #333; padding: 10px; margin-bottom: 20px; }
+        .nav-container { max-width: 900px; margin: 0 auto; display: flex; gap: 15px; }
+        .tab { color: #fff; text-decoration: none; padding: 8px 16px; }
+        .announcements { max-width: 900px; margin: 0 auto; }
+        .announcement-card {
+            background: white; padding: 20px; border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+        .announcement-title { color: #d9534f; font-weight: bold; }
+        .admin-link { float: right; color: #007bff; text-decoration: none; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="tab">Главная</a>
+            <a href="guide.html" class="tab">Путеводитель</a>
+            <a href="login.html" class="tab">Вход</a>
+        </div>
+    </nav>
+
+    <h1>Новости и объявления</h1>
+
+    <!-- Ссылка на админку (видна всем, но без пароля туда не попасть) -->
+    <a href="admin-login.html" class="admin-link">🔐 Админ-панель</a>
+
+    <div class="announcements" id="announcements-list">
+        <!-- Объявления будут появляться тут -->
+        <p style="color:#777;">Пока нет новых объявлений.</p>
+    </div>
+
+    <script>
+        // Имитация «сохранённых» объявлений (хранятся только пока открыта страница)
+        const savedAnnouncements = JSON.parse(localStorage.getItem('mc_announcements')) || [];
+
+        const list = document.getElementById('announcements-list');
+        list.innerHTML = '';
+
+        if (savedAnnouncements.length === 0) {
+            list.innerHTML = '<p style="color:#777;">Пока нет новых объявлений.</p>';
+        } else {
+            savedAnnouncements.forEach((a, i) => {
+                const card = document.createElement('div');
+                card.className = 'announcement-card';
+                card.innerHTML = `
+                    <div class="announcement-title">${escapeHtml(a.title)}</div>
+                    <p>${escapeHtml(a.text)}</p>
+                    <small style="color:#888;">${a.date}</small>
+                `;
+                list.appendChild(card);
+            });
+        }
+
+        // Защита от XSS (чтобы нельзя было вставить скрипт через объявление)
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+    </script>
+</body>
+</html>
+
+                <h4>О сайте</h4>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="rules.html">Правила</a></li>
+                    <li><a href="mods.html">Персонал</a></li>
+                    <li><a href="news.html">новости</a></li>
+                    <li><a href="news.html">жалобы</a></li>
+                    <li><a href="mod-pannel.html" class="tab">панель для админов</a></li>
+                    <li><a href="guide.html" class="tab">Путеводитель</a></li>
+                </ul>
+            </div>
+
+            <!-- Колонка 2: Контакты -->
+            <div class="footer-section">
+                <h4>купить</h4>
+                <ul>
+    <div style="text-align: center; margin: 30px 0;">
+        <a href="https://otis.mydonate.io/" class="btn-link">купить донат на сервере скидка в честь открытия</a>
+    </div>
+    <div style="text-align: center; margin: 30px 0;">
+        <a href="https://vk.com/vanyaru2060" class="btn-link">хочешь купить Такойже/другой сайт по низкой цене тебе сюда</a>
+    </div>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Тех поддержки</h4>
+                <ul>
+    <div style="text-align: center; margin: 30px 0;">
+        <a href="https://discord.gg/UzsEw9wff" class="btn-link">тех поддержка сервера</a>
+    </div>
+    <div style="text-align: center; margin: 30px 0;">
+        <a href="https://vk.com/vanyaru2060" class="btn-link">тех поддержка форума</a>
+    </div>
+               
+        </div>
+
+        <div class="copyright">
+            &copy; создано с помощью команды в вк: 
+    <div style="text-align: center; margin: 30px 0;">
+        <a href="https://vk.com/vanyaru2060" class="btn-link">команда</a>
+    </div>  сервер: OtisWorld. Все права защищены.
+        </div>
+    </footer>
+
+</body>
+</html>

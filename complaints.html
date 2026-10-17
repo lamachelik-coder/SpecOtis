@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Подать жалобу</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Стили для уведомления сверху */
+        .notification-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background-color: #dc3545; /* красный фон */
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .message-box {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .message-box h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .message-box p {
+            color: #666;
+        }
+
+        .countdown {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #dc3545;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Уведомление сверху -->
+    <div class="notification-bar">⚠️ Раздел «Жалобы» временно не работает</div>
+
+    <!-- Основной блок с сообщением -->
+    <div class="message-box">
+        <h1>Раздел жалоб отключён</h1>
+        <p>Сейчас мы не принимаем жалобы через эту форму.</p>
+        <p>Мы автоматически перенаправим тебя на главную страницу.</p>
+        <div class="countdown" id="countdown">Перенаправление через 3 секунды…</div>
+    </div>
+
+    <script>
+        // Таймер обратного отсчёта и редирект
+        let timeLeft = 3;
+        const countdownElement = document.getElementById('countdown');
+
+        const timer = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = `Перенаправление через ${timeLeft} секунды…`;
+
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                // Переход на главную
+                window.location.href = 'index.html';
+            }
+        }, 1000);
+    </script>
+
+        body { margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4; }
+        .navbar { background-color: #cccccc; padding: 10px 0; }
+        .nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: center; align-items: center; gap: 5px; }
+        .tab { padding: 12px 24px; text-decoration: none; color: #333; font-weight: bold; border-right: 1px solid #999; }
+        header { text-align: center; padding: 20px; background-color: #333; color: white; }
+        .content { max-width: 800px; margin: 40px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        textarea { height: 120px; resize: vertical; }
+        button.submit-btn {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button.submit-btn:hover { background-color: #c82333; }
+        footer { background-color: #333; color: #ccc; padding: 30px 0; margin-top: 40px; }
+        .footer-container { max-width: 900px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .footer-section h4 { color: white; margin-bottom: 15px; }
+        .footer-section ul { list-style: none; padding: 0; margin: 0; }
+        .footer-section li { margin-bottom: 8px; }
+        .footer-section a { color: #aaa; text-decoration: none; }
+        .copyright { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #444; font-size: 0.9em; color: #888; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="tab">Главная</a>
+            <a href="rules.html" class="tab">Правила</a>
+            <a href="mods.html" class="tab">Модераторы</a>
+            <a href="news.html" class="tab">Новости</a>
+            <a href="complaints.html" class="tab">Жалобы на игроков</a>
+        </div>
+    </nav>
+
+    <header><h1>Подать жалобу</h1></header>
+
+    <div class="content">
+        <h2>Форма жалобы</h2>
+        <p>Заполните форму ниже. Модераторы рассмотрят вашу жалобу.</p>
+
+        <form onsubmit="alert('Жалоба получена (имитация). Владелец сайта скопирует её в панель модератора.'); return false;">
+            <label for="complain-player">Ник нарушителя</label>
+            <input type="text" id="complain-player" placeholder="Например: Player123">
+
+            <label for="complain-reason">Причина жалобы</label>
+            <select id="complain-reason">
+                <option value="cheat">Читерство / использование стороннего ПО</option>
+                <option value="spam">Спам / флуд в чате</option>
+                <option value="insult">Оскорбления / токсичность</option>
+                <option value="other">Другое</option>
+            </select>
+
+            <label for="complain-desc">Описание ситуации</label>
+            <textarea id="complain-desc" placeholder="Опишите, что произошло и когда"></textarea>
+
+            <button type="submit" class="submit-btn">Отправить жалобу</button>
+        </form>
+    </div>
+
+ <!-- Подвал сайта -->
+    <footer>
+        <div class="footer-container">
+            <!-- Колонка 1: О сайте -->
+            <div class="footer-section">
+                <h4>О сайте</h4>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="rules.html">Правила</a></li>
+                    <li><a href="mods.html">Персонал</a></li>
+                    <li><a href="news.html">новости</a></li>
+                    <li><a href="news.html">жалобы на игроков</a></li>
+                    <li><a href="mod-pannel.html" class="tab">панель для админов</a></li>
+                </ul>
+            </div>
+
+            <!-- Колонка 2: Контакты -->
+            <div class="footer-section">
+                <h4>купить</h4>
+                <ul>
+    <div style="text-align: center; margin: 30px 0;">
+        <a href="https://otis.mydonate.io/" class="btn-link">купить донат на сервере скидка в честь открытия</a>
+    </div>
+    <div style="text-align: center; margin: 30px 0;">
+        <a href="https://vk.com/vanyaru2060" class="btn-link">хочешь купить Такойже/другой сайт по низкой цене тебе сюда</a>
+    </div>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Тех поддержки</h4>
+                <ul>
+    <div style="text-align: center; margin: 30px 0;">
+        <a href="https://discord.gg/UzsEw9wff" class="btn-link">тех поддержка сервера</a>
+    </div>
+    <div style="text-align: center; margin: 30px 0;">
+        <a href="https://vk.com/vanyaru2060" class="btn-link">тех поддержка форума</a>
+    </div>
+               
+        </div>
+
+        <div class="copyright">
+            &copy; создано с помощью команды в вк: 
+    <div style="text-align: center; margin: 30px 0;">
+        <a href="https://vk.com/vanyaru2060" class="btn-link">команда</a>
+    </div>  сервер: OtisWorld. Все права защищены.
+        </div>
+    </footer>
+
+</body>
+</html>

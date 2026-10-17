@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Админ-панель</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+        .navbar { background: #333; padding: 10px; margin-bottom: 20px; }
+        .nav-container { max-width: 900px; margin: 0 auto; display: flex; gap: 15px; }
+        .tab { color: #fff; text-decoration: none; padding: 8px 16px; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; }
+        textarea { width: 100%; height: 120px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px; }
+        button { padding: 12px 24px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #218838; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #555; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="tab">На главную</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← Вернуться на сайт</a>
+        <h2>Создать новое объявление</h2>
+
+        <label>Заголовок</label>
+        <input type="text" id="ann-title" placeholder="Например: Важное обновление сервера">
+
+        <label>Текст объявления</label>
+        <textarea id="ann-text" placeholder="Напишите текст объявления..."></textarea>
+
+        <button onclick="publishAnnouncement()">Опубликовать</button>
+
+        <hr style="margin: 30px 0; border: 0; border-top: 1px solid #ddd;">
+
+        <h3>Текущие объявления (для удаления)</h3>
+        <div id="current-announcements"></div>
+    </div>
+
+    <script>
+        // Функция публикации
+        function publishAnnouncement() {
+            const title = document.getElementById('ann-title').value.trim();
+            const text = document.getElementById('ann-text').value.trim();
+
+            if (!title || !text) {
+                alert('Заполните и заголовок, и текст!');
+                return;
+            }
+
+            const announcements = JSON.parse(localStorage.getItem('mc_announcements')) || [];
+            announcements.push({
+                title: title,
+                text: text,
+                date: new Date().toLocaleString('ru-RU')
+            });
+
+            localStorage.setItem('mc_announcements', JSON.stringify(announcements));
+            alert('Объявление опубликовано! Теперь оно видно на главной.');
+            location.reload();
+        }
+
+        // Показать текущие объявления с кнопкой удаления
+        function renderCurrent() {
+            const container = document.getElementById('current-announcements');
+            const announcements = JSON.parse(localStorage.getItem('mc_announcements')) || [];
+
+            container.innerHTML = announcements.map((a, idx) => `
+                <div style="background:#fff3cd; padding:12px; border-radius:6px; margin-bottom:10px;">
+                    <strong>${escapeHtml(a.title)}</strong> — ${a.date}
+                    <br><small>${escapeHtml(a.text)}</small>
+                    <button style="margin-left:15px; padding:4px 8px; font-size:12px;" onclick="removeAnnouncement(${idx})">Удалить</button>
+                </div>
+            `).join('');
+        }
+
+        function removeAnnouncement(index) {
+            let announcements = JSON.parse(localStorage.getItem('mc_announcements'));
+            if (announcements) {
+                announcements.splice(index, 1);
+                localStorage.setItem('mc_announcements', JSON.stringify(announcements));
+                renderCurrent();
+                alert('Объявление удалено.');
+                // Можно также перезагрузить главную, чтобы убрать с неё
+                // location.href = 'index.html';
+            }
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        renderCurrent();
+    </script>
+</body>
+</html>

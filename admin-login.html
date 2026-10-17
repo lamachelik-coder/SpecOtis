@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход для админа</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); width: 320px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #d9534f; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #c9302c; }
+        h2 { text-align: center; color: #333; }
+        .error { color: red; text-align: center; margin-top: 15px; display: none; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Вход админа</h2>
+        <form onsubmit="checkAdmin(event)">
+            <label>Пароль админа:</label>
+            <input type="password" id="admin-password" required placeholder="Введите пароль">
+            <button type="submit">Войти</button>
+            <div id="error-msg" class="error">Неверный пароль!</div>
+        </form>
+    </div>
+
+    <script>
+        // ⚠️ МЕНЯЙ ПАРОЛЬ ТОЛЬКО ЗДЕСЬ!
+        const ADMIN_PASSWORD = 'OtisWorldKrut';
+
+        function checkAdmin(e) {
+            e.preventDefault();
+            const input = document.getElementById('admin-password').value;
+            const error = document.getElementById('error-msg');
+
+            if (input === ADMIN_PASSWORD) {
+                window.location.href = 'admin-pannel.html';
+            } else {
+                error.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
